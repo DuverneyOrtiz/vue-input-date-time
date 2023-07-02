@@ -1,28 +1,26 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    {{ hours }}
+    <InputDateTime></InputDateTime>
+    <VueClock v-model="hours"></VueClock>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import InputDateTime from '@/InputDateTime.vue'
+import VueClock from '@/components/Clock.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    InputDateTime,
+    VueClock
+  },
+  data: () => ({
+    hours: '04:03:00 pm'
+  })
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
