@@ -10,37 +10,45 @@ import terser from '@rollup/plugin-terser';
 import commonjs from '@rollup/plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
 import postcssImport from 'postcss-import';
+import alias from '@rollup/plugin-alias';
+
+import path from "path";
+import { fileURLToPath } from 'url';
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default [
     {
         input: 'src/InputDateTime.vue',
-        output: [            
+        output: [
             {
                 format: 'es',
-                file: 'dist/InputDateTime/index.js',                
+                file: 'dist/InputDateTime/index.js',
 
             },
             {
                 format: 'es',
-                file: 'dist/InputDateTime/InputDateTime.esm.js',                
+                file: 'dist/InputDateTime/InputDateTime.esm.js',
 
             },
             {
                 format: 'esm',
                 file: 'dist/InputDateTime/InputDateTime.esm.js',
-                
+
             },
             {
                 format: 'cjs',
                 file: 'dist/InputDateTime/InputDateTime.ssr.js',
-                
+
                 plugins: [terser()],
             },
             {
                 format: 'iife',
                 file: 'dist/InputDateTime/InputDateTime.min.js',
                 name: 'InputDate',
-                
+
                 plugins: [terser()],
             }
 
@@ -54,7 +62,12 @@ export default [
             }),
             nodeResolve({ browser: true, jsnext: true, main: true }),
             buble(),
-            commonjs()
+            commonjs(),
+            alias({
+                entries: {
+                    ['@']: path.resolve(__dirname, 'src')
+                }
+            })
         ],
         external: ['vue']
     },
@@ -63,31 +76,31 @@ export default [
         output: [
             {
                 format: 'es',
-                file: 'dist/Clock/index.js',                
+                file: 'dist/Clock/index.js',
 
             },
             {
                 format: 'es',
                 file: 'dist/Clock/Clock.esm.js',
-                
+
 
             },
             {
                 format: 'esm',
                 file: 'dist/Clock/Clock.esm.js',
-                
+
             },
             {
                 format: 'cjs',
                 file: 'dist/Clock/Clock.ssr.js',
-                
+
                 plugins: [terser()],
             },
             {
                 format: 'iife',
                 file: 'dist/Clock/Clock.min.js',
                 name: 'ImputTime',
-                
+
                 plugins: [terser()],
             }
 
@@ -100,7 +113,12 @@ export default [
             }),
             nodeResolve({ browser: true, jsnext: true, main: true }),
             buble(),
-            commonjs()
+            commonjs(),
+            alias({
+                entries: {
+                    ['@']: path.resolve(__dirname, 'src')
+                }
+            })
         ],
         external: ['vue']
     },
