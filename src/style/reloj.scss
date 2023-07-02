@@ -1,0 +1,276 @@
+$sizeReloj: 16rem;
+$sizeRelojInternal: 15rem;
+$marginEjeY: calc($sizeRelojInternal / 2);
+
+$addPadding: 0px;
+$colorManecilla: transparent;
+
+@mixin setting-span {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+}
+
+@mixin setting-hours {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0px;
+}
+
+@mixin span-hover {
+    background-color: #D8D8D8!important;
+    color: #0000FF!important;
+}
+
+@mixin common-minutes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin margins {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.circleExternal {
+    font-size: 10px;
+    width: $sizeReloj;
+    height: $sizeReloj;
+    border: 1px solid rgba($color: #E6E6E6, $alpha: .5);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #FAFAFA;
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(140, 138, 140, 1);
+    -moz-box-shadow: 1px 1px 5px 0px rgba(140, 138, 140, 1);
+    box-shadow: 1px 1px 5px 0px rgba(140, 138, 140, 1);
+}
+
+.circleInternal {
+    width: $sizeRelojInternal;
+    height: $sizeRelojInternal;
+    border: 1px solid rgba($color: #E6E6E6, $alpha: .5);
+    border-radius: 50%;
+    // background-color: red;
+    position: relative;
+    color: black;
+    // box-sizing: border-box;
+    background-color: white;
+    // padding: 10px;
+
+}
+
+.number-12-6 {
+    transform: rotate(90deg);
+    @include common-minutes;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin-top: calc(106px + #{$addPadding});
+    background-color: $colorManecilla;
+
+    span {
+        transform: rotate(-90deg);
+        @include margins;
+    }
+}
+
+.number-3-9 {
+    transform: rotate(0deg);
+    @include common-minutes;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin-top: calc(106px + #{$addPadding});
+    background-color: $colorManecilla;
+
+    span {
+        transform: rotate(0deg);
+        @include margins;
+    }
+}
+
+.number-1-7 {  
+
+    transform: rotate(-60deg);
+    @include common-minutes;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin-top: calc(106px + #{$addPadding});
+    background-color: $colorManecilla;
+
+    span {
+        transform: rotate(-60deg);
+        @include margins;
+    }
+}
+
+.number-2-8 {
+    transform: rotate(-30deg);
+    @include common-minutes;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin-top: calc(106px + #{$addPadding});
+    background-color: $colorManecilla;
+
+    span {
+        transform: rotate(-120deg);
+        @include margins;
+    }
+}
+
+.number-4-10 {
+    transform: rotate(-150deg);
+    @include common-minutes;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin-top: calc(106px + #{$addPadding});
+    background-color: $colorManecilla;
+
+    span {
+        transform: rotate(-120deg);
+        @include margins;
+    }
+}
+
+.number-5-11 {
+    transform: rotate(-120deg);
+    @include common-minutes;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin-top: calc(106px + #{$addPadding});
+    background-color: $colorManecilla;
+
+    span {
+        transform: rotate(-120deg);
+        @include margins;
+    }
+}
+
+.number-12-6 span {
+    transform: rotate(-90deg);
+    @include setting-span;
+
+    &:hover {
+        @include span-hover
+    }
+}
+
+.number-2-8 span {
+    transform: rotate(30deg);
+    @include setting-span;
+
+    &:hover {
+        @include span-hover
+    }
+}
+
+.number-1-7 span {
+    transform: rotate(60deg);
+    @include setting-span;
+
+    &:hover {
+        @include span-hover
+    }
+}
+
+.number-4-10 span {
+    transform: rotate(150deg);
+    @include setting-span;
+
+    &:hover {
+        @include span-hover
+    }
+}
+
+.number-5-11 span {
+    transform: rotate(120deg);
+    @include setting-span;
+
+    &:hover {
+        @include span-hover
+    }
+}
+
+.number-3-9 span {
+    @include setting-span;
+
+    &:hover {
+        @include span-hover
+    }
+}
+
+.showHours {
+    margin-top: 103px;
+    margin-left: 76px;
+    position: absolute;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba($color: #E6E6E6, $alpha: .9);
+    display: flex;
+    justify-content: scenter;
+    text-align: center;
+    font-weight: bold;
+    z-index: 10000;
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(140, 138, 140, 1);
+    -moz-box-shadow: 1px 1px 5px 0px rgba(140, 138, 140, 1);
+    box-shadow: 1px 1px 5px 0px rgba(140, 138, 140, 1);
+
+}
+
+.reloj-am {
+    margin-top: 64px;
+    margin-left: 107px;
+    position: absolute;
+    border: 1px solid black;
+    padding: 6px;
+    border-radius: 5px;
+    z-index: 1000;    
+}
+
+.reloj-pm {
+    margin-top: 149px;
+    margin-left: 108px;
+    position: absolute;
+    border: 1px solid black;
+    padding: 6px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.AM-PM-selected {
+    background-color: rgba(#0000FF, .4);
+    color: white;
+    border: 1px solid rgba(#0000FF, .2);
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(140, 138, 140, 1);
+    -moz-box-shadow: 1px 1px 5px 0px rgba(140, 138, 140, 1);
+    box-shadow: 1px 1px 5px 0px rgba(140, 138, 140, 1);
+}
+
+.AM-PM-disabled {
+    background-color: rgba(#E6E6E6, 1);
+    color: #BDBDBD;
+    border: 1px solid rgba(#E6E6E6, .2);
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(140, 138, 140, 1);
+    -moz-box-shadow: 1px 1px 5px 0px rgba(140, 138, 140, 1);
+    box-shadow: 1px 1px 5px 0px rgba(140, 138, 140, 1);
+}
+
+.hourSeleted {
+    @include span-hover
+}
+
+@import './minutes.scss'

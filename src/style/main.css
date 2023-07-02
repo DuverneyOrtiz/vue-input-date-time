@@ -1,0 +1,73 @@
+#fbe49ea16cf84b049b7e871e8fbd7461 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    width:300px;
+    border-radius: 5px;
+    border: 1px solid #F2F2F2;
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(140, 138, 140, 1);
+    -moz-box-shadow: 1px 1px 5px 0px rgba(140, 138, 140, 1);
+    box-shadow: 1px 1px 5px 0px rgba(140, 138, 140, 1);
+}
+
+table {
+    width: 100%;
+    background-color: white;
+    /* background-color: #2E2E2E; */
+    border-radius: 5px;
+    
+
+}
+
+table tr td {
+    text-align: center;
+    color: white;
+    color: black;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+}
+
+.text-date {
+ border-bottom: 1px solid #F2F2F2;
+ padding-top: 1rem;
+ padding-bottom: 1rem;
+}
+
+.arrrow-actions {
+    text-align: center;
+    /* color: red; */
+    /* background-color: green; */
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 50px;
+    width: 2rem;
+    height: 2rem;
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+}
+
+.arrrow-actions:first-child {
+    margin-right: 2px;
+}
+
+.container-arrow-actions {
+    text-align: right;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.today {
+    background-color: blue;
+    border-radius: 5px;
+    color: white;
+}
+
+.otherDay:hover {
+    background-color: rgba(4, 4, 180, .1);
+    border-radius: 5px;
+    color: black;
+}

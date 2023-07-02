@@ -1,0 +1,234 @@
+$colorManecilla: transparent;
+$fornt-size: 10px;
+$addPadding: 0px;
+
+@mixin common-minutes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin margins {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+@mixin pointHour($grados) {
+    transform: rotate($grados);
+    @include common-minutes;
+    position: absolute;
+    top: 0;
+    right: -1px;
+    width: 242px;
+    margin-top: calc(119px + #{$addPadding});
+    // background-color: greenyellow;
+
+    span {
+        transform: rotate(- #{grados});
+        width: 2px;
+        height: 2px;
+        border-radius: 50%;
+        background-color: red;
+        @include margins;
+    }
+
+}
+
+.minutes-12-30 {
+    transform: rotate(90deg);
+    @include common-minutes;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin-top: calc(115px + #{$addPadding});
+    background-color: $colorManecilla;
+
+    span {
+        transform: rotate(-90deg);
+        @include margins;
+    }
+
+}
+
+
+.minutes-1-31 {
+    @include pointHour(96deg);
+
+}
+
+.minutes-2-32 {
+    @include pointHour(102deg);
+}
+
+.minutes-3-33 {
+    @include pointHour(108deg);
+}
+
+.minutes-4-34 {
+    @include pointHour(114deg);
+}
+
+.minutes-5-35 {
+    transform: rotate(120deg);
+    @include common-minutes;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin-top: calc(115px + #{$addPadding});
+    background-color: $colorManecilla;
+
+    span {
+        transform: rotate(-120deg);
+        @include margins;
+    }
+
+}
+
+.minutes-6-36 {
+    @include pointHour(126deg);
+}
+
+.minutes-7-37 {
+    @include pointHour(132deg);
+}
+
+.minutes-8-38 {
+    @include pointHour(138deg);
+}
+
+.minutes-9-39 {
+    @include pointHour(144deg);
+}
+
+.minutes-10-40 {
+    transform: rotate(150deg);
+    @include common-minutes;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin-top: calc(115px + #{$addPadding});
+    background-color: $colorManecilla;
+
+    span {
+        transform: rotate(-150deg);
+        @include margins;
+    }
+
+}
+
+.minutes-11-41 {
+    @include pointHour(156deg);
+}
+
+.minutes-12-42 {
+    @include pointHour(162deg);
+}
+
+.minutes-13-43 {
+    @include pointHour(168deg);
+}
+
+.minutes-14-44 {
+    @include pointHour(174deg);
+}
+
+.minutes-15-45 {
+    transform: rotate(180deg);
+    @include common-minutes;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin-top: calc(115px + #{$addPadding});
+    background-color: $colorManecilla;
+
+    span {
+        transform: rotate(-180deg);
+        @include margins;
+    }
+
+}
+
+.minutes-16-46 {
+    @include pointHour(186deg);
+
+}
+
+.minutes-17-47 {
+    @include pointHour(192deg);
+
+}
+
+.minutes-18-48 {
+    @include pointHour(198deg);
+
+}
+
+.minutes-19-49 {
+    @include pointHour(204deg);
+
+}
+
+.minutes-20-50 {
+    transform: rotate(210deg);
+    @include common-minutes;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin-top: 115px;
+    background-color: $colorManecilla;
+
+    span {
+        transform: rotate(-210deg);
+        @include margins;
+    }
+
+}
+
+.minutes-21-51 {
+    @include pointHour(216deg);
+}
+
+.minutes-22-52 {
+    @include pointHour(222deg);   
+}
+
+.minutes-23-53 {
+    @include pointHour(228deg); 
+}
+
+.minutes-24-54 {
+    @include pointHour(234deg);
+}
+
+.minutes-25-55 {
+    transform: rotate(240deg);
+    @include common-minutes;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin-top: 115px;
+    background-color: $colorManecilla;
+
+    span {
+        transform: rotate(-240deg);
+        @include margins;
+    }
+
+}
+
+.minutes-26-56 {
+    @include pointHour(246deg);
+}
+
+.minutes-27-57 {
+    @include pointHour(252deg);
+
+}
+
+.minutes-28-58 {
+    @include pointHour(258deg);
+}
+
+.minutes-29-59 {
+    @include pointHour(264deg);
+}
