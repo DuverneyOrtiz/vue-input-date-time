@@ -30,8 +30,8 @@ Caracteriscticas del componente calendar y clock.
 
 ###   Compatibilidad
 
-Su proyecto necesita usar vue 2.x.x o posterior.
-***Nodejs*** - v16.17.0
+Su proyecto necesita usar vue 2.x.x o posterior.<br>
+***Nodejs*** - v16.17.0<br>
 ***npm*** - 9.6.7
 
 ### Instalación
@@ -46,8 +46,8 @@ He aquí un ejemplo de uso básico:
 ```js
 <template>
 	<div  id="app">
-	<VueClock v-model="hours"></VueClock>
-	<VueInputDateTime v-model="date"></VueInputDateTime>
+		<VueClock v-model="hours"></VueClock>
+		<VueInputDateTime v-model="date"></VueInputDateTime>
 	</div>
 </template>
 
