@@ -1,7 +1,7 @@
 # Vue canlendar and vue clock
 
 <div align="center">
-  <img width="436" height="398" src="/src/image/calendar.png">
+  <img width="436" height="398" src="https://github.com/DuverneyOrtiz/vue-input-date-time/blob/master/src/image/calendar.png">
 </div>
 
 <div align="center">
