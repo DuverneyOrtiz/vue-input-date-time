@@ -5,7 +5,7 @@
 </div>
 
 <div align="center">
-  <img width="436" height="398" src="/src/image/clock.png">
+  <img width="436" height="398" src="https://github.com/DuverneyOrtiz/vue-input-date-time/blob/c429eda2e2b6598160ffde15b450f0077537b119/src/image/calendar.png">
 </div>
 
 Caracteriscticas del componente calendar y clock.
