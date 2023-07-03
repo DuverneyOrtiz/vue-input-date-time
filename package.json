@@ -1,5 +1,5 @@
 {
-  "name": "input-date-time",
+  "name": "vue-input-date-time",
   "version": "1.0.18",
   "private": true,
   "main": "dist/index.js",
