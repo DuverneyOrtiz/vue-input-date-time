@@ -1,26 +1,28 @@
 import moment from 'moment'
 
+const InstanceMoment = (date) => date !== undefined ? moment(date) : moment()
+const formatDate = (date, formatInput, formatOuput) => moment(date, formatInput).format(formatOuput)
 const getYear = (momentCurrent) => (momentCurrent !== undefined && momentCurrent !== null)? momentCurrent.get('year') : moment().get('year');
 const getMonth = (momentCurrent) => (momentCurrent !== undefined && momentCurrent !== null)? momentCurrent.get('month') : moment().get('month');
-const getDate = () => moment().get('date')
+const getDate = (momentCurrent) => (momentCurrent !== undefined && momentCurrent !== null)? momentCurrent.get('date') : moment().get('date')
 const daysMonth = (momentCurrent) => (momentCurrent !== undefined && momentCurrent !== null)? momentCurrent.daysInMonth() : moment().daysInMonth()
 const getHour = (time, format) => moment(time, format).format("hh");
 const getMinute = (time, format) => moment(time, format).format("mm");
 const getSecond = () => moment().format("ss");
 const getMeridiano = (time, format) => moment(time, format).format("a");
-const addMonth = (number = 1) => moment().add(number, 'months');
+const addMonth = (number = 1, momentCurrent = moment()) => momentCurrent.add(number, 'months');
 const subtractMonth = (number = 1) => moment().subtract(number, 'months');
 const addYear = (number = 1) => moment().add(number, 'years');
 const subtractYear = (number = 1) => moment().subtract(number, 'years');
 
 const setYear = (year) => moment().year(year);
 
-const dayWeekInit = () => {
-    const data = `${getYear()}-${getMonth() + 1}-01`
+const dayWeekInit = (momentCurrent = moment()) => {
+    const data = `${getYear(momentCurrent)}-${getMonth(momentCurrent) + 1}-01`
     return moment(data).days()
 } 
 
-const letterMonth = (languaje = 'es', momentCurrent) => {   
+const letterMonth = (languaje = 'es', momentCurrent = moment()) => {   
     const month = {
         es: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
         en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -46,9 +48,9 @@ const letterDays = (languaje = 'es', size = 'long') => {
     return days[languaje][size]
 }
 
-const getDayWeek = () => {
+const getDayWeek = (momentCurrent = moment()) => {
     const getDay = letterDays()
-    return getDay[moment().days()]
+    return getDay[momentCurrent.days()]
 }
 
 const dayWeekStart = (momentCurrent)=> {
@@ -59,6 +61,8 @@ const dayWeekStart = (momentCurrent)=> {
 
     return dayWeekInit()
 }
+
+const validateMoment = (time, format) => moment(time, format).format(format);
 
 
 
@@ -81,5 +85,8 @@ export {
     getHour,
     getMinute,
     getSecond,
-    getMeridiano
+    getMeridiano,
+    validateMoment,
+    InstanceMoment,
+    formatDate
 }
