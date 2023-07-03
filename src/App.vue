@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    {{ hours }}
-    <InputDateTime></InputDateTime>
+    {{ hours }} - {{ date }}
+    <InputDateTime v-model="date" :max="2023" :min="2022"></InputDateTime>
     <VueClock v-model="hours"></VueClock>
   </div>
 </template>
@@ -17,7 +17,8 @@ export default {
     VueClock
   },
   data: () => ({
-    hours: '04:03:00 pm'
+    hours: '00:00:00 am',
+    date: '2023-01-22'
   })
 }
 </script>
