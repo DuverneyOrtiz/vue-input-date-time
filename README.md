@@ -23,4 +23,4 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-![Screenshot](/image/calendar.png)
+![Screenshot](/src/image/calendar.png)
