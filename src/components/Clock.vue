@@ -51,9 +51,8 @@
 <script>
 import HOURS from "./hours";
 import MINUTES from "./minutes";
-import moment from "moment";
 
-import { getHour,  getMinute, getSecond,  getMeridiano } from '@/script/moment'
+import { getHour,  getMinute, getSecond,  getMeridiano, validateMoment } from '@/script/moment'
 
 export default {
   name: "InputClock",
@@ -117,7 +116,7 @@ export default {
       this.isHour = false;
     },
     validateValue(hours) {
-      const result = moment(hours, "hh:mm").format("hh:mm");
+      const result = validateMoment(hours, "hh:mm");
       return result !== "Invalid date";
     },
     getHour(hours) {
