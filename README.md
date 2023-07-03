@@ -30,7 +30,7 @@ Caracteriscticas del componente calendar y clock.
 
 ###   Compatibilidad
 
-Su proyecto necesita usar vue 2.x.x o posterior.<br>
+Su proyecto necesita usar vue 2.x.x<br>
 ***Nodejs*** - v16.17.0<br>
 ***npm*** - 9.6.7
 
