@@ -1,33 +1,37 @@
 <template>
   <div class="circleExternal">
     <div class="circleInternal">
-      <div
-        class="cursor-pointer reloj-am"
-        :class="{
-          'AM-PM-selected': meridiano === 'am',
-          'AM-PM-disabled': meridiano === 'pm',
-        }"
-        @click="selectedMeridiano('am')"
-      >
-        AM
-      </div>
-      <div class="showHours">
-        <span>
-          <span class="cursor-pointer" @click="showHour()">{{ hour }}</span> :
-          <span class="cursor-pointer" @click="showMinutes()">{{
-            minutes
-          }}</span>
-        </span>
-      </div>
-      <div
-        class="reloj-pm cursor-pointer"
-        :class="{
-          'AM-PM-selected': meridiano === 'pm',
-          'AM-PM-disabled': meridiano === 'am',
-        }"
-        @click="selectedMeridiano('pm')"
-      >
-        PM
+      <div class="meridiano">
+        <div
+          class="cursor-pointer reloj-am"
+          :class="{
+            'AM-PM-selected': meridiano === 'am',
+            'AM-PM-disabled': meridiano === 'pm',
+          }"
+          @click="selectedMeridiano('am')"
+        >
+          AM
+        </div>
+
+        <div class="showHours">
+          <span>
+            <span class="cursor-pointer" @click="showHour()">{{ hour }}</span> :
+            <span class="cursor-pointer" @click="showMinutes()">{{
+              minutes
+            }}</span>
+          </span>
+        </div>
+
+        <div
+          class="cursor-pointer reloj-pm"
+          :class="{
+            'AM-PM-selected': meridiano === 'pm',
+            'AM-PM-disabled': meridiano === 'am',
+          }"
+          @click="selectedMeridiano('pm')"
+        >
+          PM
+        </div>
       </div>
 
       <div
@@ -52,7 +56,13 @@
 import HOURS from "./hours";
 import MINUTES from "./minutes";
 
-import { getHour,  getMinute, getSecond,  getMeridiano, validateMoment } from '@/script/moment'
+import {
+  getHour,
+  getMinute,
+  getSecond,
+  getMeridiano,
+  validateMoment,
+} from "@/script/moment";
 
 export default {
   name: "InputClock",
@@ -66,7 +76,7 @@ export default {
   data: () => ({
     hour: "00",
     minutes: "00",
-    seconds: '',
+    seconds: "",
     meridiano: "am",
     isHour: true,
     arrayHours: [],
@@ -96,11 +106,13 @@ export default {
         this.arrayHours = MINUTES;
         this.isHour = false;
       }
-      const clock = `${this.hour}:${this.minutes}:${getSecond()} ${this.meridiano}`;
+      const clock = `${this.hour}:${this.minutes}:${getSecond()} ${
+        this.meridiano
+      }`;
       this.$emit("input", clock);
     },
     selectedMeridiano(meridiano) {
-      this.meridiano = meridiano
+      this.meridiano = meridiano;
       const clock = `${this.hour}:${this.minutes}:${getSecond()} ${meridiano}`;
       this.$emit("input", clock);
     },
@@ -125,7 +137,7 @@ export default {
     getMinutes(hours) {
       return getMinute(hours, "hh:mm:ss a");
     },
-    getMeridiano(hours) {     
+    getMeridiano(hours) {
       return getMeridiano(hours, "hh:mm:ss a");
     },
   },

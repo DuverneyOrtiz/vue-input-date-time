@@ -1,5 +1,8 @@
-$sizeReloj: 16rem;
-$sizeRelojInternal: 15rem;
+
+$margeExterno: 230px;
+
+$sizeReloj: $margeExterno;
+$sizeRelojInternal: $margeExterno - 10px;
 $marginEjeY: calc($sizeRelojInternal / 2);
 
 $addPadding: 0px;
@@ -29,6 +32,12 @@ $colorManecilla: transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    width: 100%;
+    height: 1.78rem;
+    margin-top: calc(($sizeRelojInternal / 2) - 14px);
+
+    position: absolute;
 }
 
 @mixin margins {
@@ -62,17 +71,12 @@ $colorManecilla: transparent;
     color: black;
     // box-sizing: border-box;
     background-color: white;
-    // padding: 10px;
 
 }
 
 .number-12-6 {
     transform: rotate(90deg);
     @include common-minutes;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    margin-top: calc(106px + #{$addPadding});
     background-color: $colorManecilla;
 
     span {
@@ -84,10 +88,6 @@ $colorManecilla: transparent;
 .number-3-9 {
     transform: rotate(0deg);
     @include common-minutes;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    margin-top: calc(106px + #{$addPadding});
     background-color: $colorManecilla;
 
     span {
@@ -100,10 +100,6 @@ $colorManecilla: transparent;
 
     transform: rotate(-60deg);
     @include common-minutes;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    margin-top: calc(106px + #{$addPadding});
     background-color: $colorManecilla;
 
     span {
@@ -115,10 +111,6 @@ $colorManecilla: transparent;
 .number-2-8 {
     transform: rotate(-30deg);
     @include common-minutes;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    margin-top: calc(106px + #{$addPadding});
     background-color: $colorManecilla;
 
     span {
@@ -130,10 +122,6 @@ $colorManecilla: transparent;
 .number-4-10 {
     transform: rotate(-150deg);
     @include common-minutes;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    margin-top: calc(106px + #{$addPadding});
     background-color: $colorManecilla;
 
     span {
@@ -145,10 +133,6 @@ $colorManecilla: transparent;
 .number-5-11 {
     transform: rotate(-120deg);
     @include common-minutes;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    margin-top: calc(106px + #{$addPadding});
     background-color: $colorManecilla;
 
     span {
@@ -210,21 +194,34 @@ $colorManecilla: transparent;
     }
 }
 
-.showHours {
-    margin-top: 103px;
-    margin-left: 76px;
+.meridiano {
+    height: 34px;
+    transform: rotate(90deg);
+    display: flex;
+    justify-content: space-around;
+    align-items:baseline;
+    margin-top: calc(($sizeRelojInternal / 2) - 17px);
     position: absolute;
-    padding-left: 30px;
-    padding-right: 30px;
+
+    width: 60%;
+    margin-left: 20%;
+    z-index: 1000;
+    // background-color: red;
+    
+}
+
+.showHours {
+    transform: rotate(-90deg);
+    padding-left: 14px;
+    padding-right:14px;
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 5px;
     border: 1px solid rgba($color: #E6E6E6, $alpha: .9);
     display: flex;
-    justify-content: scenter;
+    justify-content: space-between;
     text-align: center;
     font-weight: bold;
-    z-index: 10000;
     -webkit-box-shadow: 1px 1px 5px 0px rgba(140, 138, 140, 1);
     -moz-box-shadow: 1px 1px 5px 0px rgba(140, 138, 140, 1);
     box-shadow: 1px 1px 5px 0px rgba(140, 138, 140, 1);
@@ -232,23 +229,23 @@ $colorManecilla: transparent;
 }
 
 .reloj-am {
-    margin-top: 64px;
-    margin-left: 107px;
-    position: absolute;
+    transform: rotate(-90deg);
     border: 1px solid black;
     padding: 6px;
     border-radius: 5px;
     z-index: 1000;    
+    display: flex;
+    align-items: center;
 }
 
 .reloj-pm {
-    margin-top: 149px;
-    margin-left: 108px;
-    position: absolute;
+    transform: rotate(-90deg);
     border: 1px solid black;
     padding: 6px;
     border-radius: 5px;
     z-index: 1000;
+    display: flex;
+    align-items: center;
 }
 
 .AM-PM-selected {
@@ -271,6 +268,10 @@ $colorManecilla: transparent;
 
 .hourSeleted {
     @include span-hover
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
 
 @import './minutes.scss'
