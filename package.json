@@ -1,7 +1,7 @@
 {
   "name": "vue-input-date-time",
-  "version": "1.0.18",
-  "private": true,
+  "version": "3.0.7",
+  "private": false,
   "main": "dist/index.js",
   "type": "module",
   "files": [
@@ -10,6 +10,20 @@
     "InputDateTime.js",
     "Clock.js"
   ],
+  "keywords": [
+    "calendar",
+    "clock",
+    "time",
+    "vue time",
+    "vue calendar",
+    "vue calendar time"
+  ],
+  "author": "Duverney Ortiz <https://gitlab.com/duverney.ortiz>",
+  "homepage": "https://github.com/DuverneyOrtiz/vue-input-date-time.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DuverneyOrtiz/vue-input-date-time.git"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
