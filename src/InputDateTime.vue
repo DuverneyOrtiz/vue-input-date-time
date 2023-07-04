@@ -1,6 +1,5 @@
 <template>
   <div id="fbe49ea16cf84b049b7e871e8fbd7461">
-    {{ momentCurrent.format('YYYY-MM-DD') }}
     <table border="0">
       <tr>
         <td class="text-date" colspan="7">
@@ -294,6 +293,6 @@ export default {
 };
 </script>
   
-  <style lang="scss" scoped>
+<style lang="scss" scoped>
 @import "./style/main.css";
 </style>
