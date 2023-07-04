@@ -5715,23 +5715,29 @@ var moment$1 = {exports: {}};
 var momentExports = moment$1.exports;
 var moment = /*@__PURE__*/getDefaultExportFromCjs(momentExports);
 
+var InstanceMoment = function (date) { return date !== undefined ? moment(date) : moment(); };
+var formatDate = function (date, formatInput, formatOuput) { return moment(date, formatInput).format(formatOuput); };
 var getYear = function (momentCurrent) { return (momentCurrent !== undefined && momentCurrent !== null)? momentCurrent.get('year') : moment().get('year'); };
 var getMonth = function (momentCurrent) { return (momentCurrent !== undefined && momentCurrent !== null)? momentCurrent.get('month') : moment().get('month'); };
-var getDate = function () { return moment().get('date'); };
+var getDate = function (momentCurrent) { return (momentCurrent !== undefined && momentCurrent !== null)? momentCurrent.get('date') : moment().get('date'); };
 var daysMonth = function (momentCurrent) { return (momentCurrent !== undefined && momentCurrent !== null)? momentCurrent.daysInMonth() : moment().daysInMonth(); };
-var addMonth = function (number) {
+var addMonth = function (number, momentCurrent) {
     if ( number === void 0 ) number = 1;
+    if ( momentCurrent === void 0 ) momentCurrent = moment();
 
-    return moment().add(number, 'months');
+    return momentCurrent.add(number, 'months');
 };
 
-var dayWeekInit = function () {
-    var data = (getYear()) + "-" + (getMonth() + 1) + "-01";
+var dayWeekInit = function (momentCurrent) {
+    if ( momentCurrent === void 0 ) momentCurrent = moment();
+
+    var data = (getYear(momentCurrent)) + "-" + (getMonth(momentCurrent) + 1) + "-01";
     return moment(data).days()
 }; 
 
 var letterMonth = function (languaje, momentCurrent) {
     if ( languaje === void 0 ) languaje = 'es';
+    if ( momentCurrent === void 0 ) momentCurrent = moment();
    
     var month = {
         es: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
@@ -5761,9 +5767,11 @@ var letterDays = function (languaje, size) {
     return days[languaje][size]
 };
 
-var getDayWeek = function () {
+var getDayWeek = function (momentCurrent) {
+    if ( momentCurrent === void 0 ) momentCurrent = moment();
+
     var getDay = letterDays();
-    return getDay[moment().days()]
+    return getDay[momentCurrent.days()]
 };
 
 var dayWeekStart = function (momentCurrent){
@@ -5776,159 +5784,244 @@ var dayWeekStart = function (momentCurrent){
 };
 
 var InputDateTime = {
-render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"fbe49ea16cf84b049b7e871e8fbd7461"}},[_c('table',{attrs:{"border":"0"}},[_c('tr',[_c('td',{staticClass:"text-date",attrs:{"colspan":"7"}},[_vm._v("\n        "+_vm._s(_vm.getDay())+", "+_vm._s(_vm.getDayMonth())+" de "+_vm._s(_vm.getMonthCurrent())+" de\n        "+_vm._s(_vm.getYear())+"\n      ")])]),_vm._v(" "),_c('tr',{staticClass:"title-actions"},[_c('td',{attrs:{"colspan":"3"}},[_c('span',[_vm._v(_vm._s(_vm.getMonth)+" de "+_vm._s(_vm.nextYear))])]),_vm._v(" "),_c('td',{staticClass:"container-arrow-actions",attrs:{"colspan":"4"}},[_c('span',{staticClass:"arrrow-actions",on:{"click":_vm.nextMonth}},[_vm._v("↑")]),_vm._v(" "),_c('span',{staticClass:"arrrow-actions",on:{"click":_vm.previustMonth}},[_vm._v("↓")])])]),_vm._v(" "),_c('tr',{staticClass:"header-days"},_vm._l((_vm.getDayLetter),function(day,index){return _c('td',{key:index},[_vm._v(_vm._s(day))])}),0),_vm._v(" "),_vm._l((_vm.weeks),function(week,index){return _c('tr',{key:index},_vm._l((week),function(day,j){return _c('td',{key:j,class:{
+render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"fbe49ea16cf84b049b7e871e8fbd7461"}},[_c('table',{attrs:{"border":"0"}},[_c('tr',[_c('td',{staticClass:"text-date",attrs:{"colspan":"7"}},[_vm._v("\n        "+_vm._s(_vm.getDay)+", "+_vm._s(_vm.getDayMonthToday())+" de\n        "+_vm._s(_vm.getMonthCurrentToday)+" de\n        "+_vm._s(_vm.getYear)+"\n      ")])]),_vm._v(" "),_c('tr',{staticClass:"title-actions"},[_c('td',{attrs:{"colspan":"3"}},[_c('span',[_vm._v(_vm._s(_vm.getMonth)+" de "+_vm._s(_vm.nextYear))])]),_vm._v(" "),_c('td',{staticClass:"container-arrow-actions",attrs:{"colspan":"4"}},[_c('span',{staticClass:"arrrow-actions",on:{"click":_vm.nextMonth}},[_vm._v("↑")]),_vm._v(" "),_c('span',{staticClass:"arrrow-actions",on:{"click":_vm.previustMonth}},[_vm._v("↓")])])]),_vm._v(" "),_c('tr',{staticClass:"header-days"},_vm._l((_vm.getDayLetter),function(day,index){return _c('td',{key:index},[_vm._v(_vm._s(day))])}),0),_vm._v(" "),_vm._l((_vm.weeks),function(week,index){return _c('tr',{key:index},_vm._l((week),function(day,j){return _c('td',{key:j,class:{
           today: _vm.isToday(day),
           'otherDay cursor-pointer': _vm.isDayEmpty(day),
-        }},[_vm._v("\n        "+_vm._s(day)+"\n      ")])}),0)})],2)])},
+        },on:{"click":function($event){return _vm.dateSelected(day)}}},[_vm._v("\n        "+_vm._s(day)+"\n      ")])}),0)})],2)])},
 staticRenderFns: [],
-    name: "InputDateTime",
-    components: {
+  name: "InputDateTime",
+  components: {},
+  props: {
+    max: {
+      // eslint-disable-next-line vue/require-prop-type-constructor
+      type: Number | Boolean,
+      required: false,
+      default: true,
     },
-    props: {
-      max: {
-        // eslint-disable-next-line vue/require-prop-type-constructor
-        type: Number | Boolean,
-        required: false,
-        default: true,
-      },
-      min: {
-        // eslint-disable-next-line vue/require-prop-type-constructor
-        type: Number | Boolean,
-        required: false,
-        default: true,
-      },
+    min: {
+      // eslint-disable-next-line vue/require-prop-type-constructor
+      type: Number | Boolean,
+      required: false,
+      default: true,
     },
-    data: function () { return ({
-      getDayLetter: letterDays("es", "small"),
-      weeks: [],
-      countMonth: 0,
-      countYear: 0,
-      momentCurrent: undefined,
-      nextYear: getYear(),
-    }); },
-    created: function created() {
-      this.weeks = this.createCalendarInit();
+    value: {
+      type: String,
+      required: false,
+      default: undefined,
     },
-    computed: {
-      getMonth: function getMonth() {
-        return letterMonth("es", this.momentCurrent);
-      },
+  },
+  data: function () { return ({
+    getDayLetter: letterDays("es", "small"),
+    weeks: [],
+    countMonth: 0,
+    countYear: 0,
+    momentCurrent: InstanceMoment(),
+    momentCurrentToday: InstanceMoment(),
+    nextYear: getYear(),
+    getDaySelected: getDate(),
+    getMonthSelected: getMonth() + 1,
+    pointRefMoment: InstanceMoment()
+  }); },
+  // created() {
+  //   this.weeks = this.createCalendarInit();
+  // },
+  mounted: function mounted() {
+    if (this.value !== undefined && this.value !== null) {
+      this.momentCurrentToday = InstanceMoment(this.value);
+      this.momentCurrent = InstanceMoment(this.value);
+      this.pointRefMoment = InstanceMoment(this.value);
+      this.nextYear = getYear(this.momentCurrent);
+      this.getDaySelected = getDate(this.momentCurrent);
+      this.getMonthSelected = getMonth(this.momentCurrent) + 1;
+    }
+
+    this.weeks = this.createCalendarInit();
+  },
+  computed: {
+    getMonth: function getMonth() {
+      return letterMonth("es", this.momentCurrent);
     },
-    methods: {
-      createCalendarInit: function createCalendarInit() {
-        var dayInitDate = dayWeekInit();
-        var totalDays = daysMonth();
-        return this.createCalendar(dayInitDate, totalDays);
-      },
-      createCalendar: function createCalendar(dayInitDate, totalDays) {
-        var i = 1;
-        var j = 0;
-        var arrayDaysMonth = [];
-  
-        do {
-          if (j >= dayInitDate) {
-            arrayDaysMonth.push(i);
-            i++;
-          } else { arrayDaysMonth.push(""); }
-  
-          j++;
-        } while (i <= totalDays);
-  
-        var week1 = arrayDaysMonth.slice(0, 7);
-        var week2 = arrayDaysMonth.slice(7, 14);
-        var week3 = arrayDaysMonth.slice(14, 21);
-        var week4 = arrayDaysMonth.slice(21, 28);
-        var week5 = arrayDaysMonth.slice(28, 35);
-        var week6 = arrayDaysMonth.slice(35, 42);
-  
-        if (week5.length < 7) {
-          var subs = 7 - week5.length;
-          for (var k = 0; k < subs; k++) {
-            week5.push("");
-          }
+    getMonthCurrentToday: function getMonthCurrentToday() {
+      return letterMonth("es", this.momentCurrentToday);
+    },
+    getYearCurrentToday: function getYearCurrentToday() {
+      return getYear(this.momentCurrentToday);
+    },
+    getDay: function getDay() {
+      return getDayWeek(this.momentCurrentToday);
+    },
+    getYear: function getYear$1() {
+      return getYear(this.momentCurrentToday);
+    },
+  },
+  methods: {
+    createCalendarInit: function createCalendarInit() {
+      var dayInitDate = dayWeekInit(this.momentCurrent);
+      var totalDays = daysMonth(this.momentCurrent);
+      return this.createCalendar(dayInitDate, totalDays);
+    },
+    createCalendar: function createCalendar(dayInitDate, totalDays) {
+      var i = 1;
+      var j = 0;
+      var arrayDaysMonth = [];
+
+      do {
+        if (j >= dayInitDate) {
+          arrayDaysMonth.push(i);
+          i++;
+        } else { arrayDaysMonth.push(""); }
+
+        j++;
+      } while (i <= totalDays);
+
+      var week1 = arrayDaysMonth.slice(0, 7);
+      var week2 = arrayDaysMonth.slice(7, 14);
+      var week3 = arrayDaysMonth.slice(14, 21);
+      var week4 = arrayDaysMonth.slice(21, 28);
+      var week5 = arrayDaysMonth.slice(28, 35);
+      var week6 = arrayDaysMonth.slice(35, 42);
+
+      if (week5.length < 7) {
+        var subs = 7 - week5.length;
+        for (var k = 0; k < subs; k++) {
+          week5.push("");
         }
-  
-        if (week6[0] === undefined) { return [week1, week2, week3, week4, week5]; }
-  
-        if (week6.length < 7) {
-          var subs$1 = 7 - week6.length;
-          for (var k$1 = 0; k$1 < subs$1; k$1++) {
-            week6.push("");
-          }
+      }
+
+      if (week6[0] === undefined) { return [week1, week2, week3, week4, week5]; }
+
+      if (week6.length < 7) {
+        var subs$1 = 7 - week6.length;
+        for (var k$1 = 0; k$1 < subs$1; k$1++) {
+          week6.push("");
         }
-  
-        return [week1, week2, week3, week4, week5, week6];
-      },
-      getYear: function getYear$1() {
-        return getYear();
-      },
-      getMonthCurrent: function getMonthCurrent() {
-        return letterMonth();
-      },
-      getDay: function getDay() {
-        return getDayWeek();
-      },
-      getDayMonth: function getDayMonth() {
-        return getDate();
-      },
-      isToday: function isToday(day) {
-        return (
-          day === this.getDayMonth() &&
-          this.getMonth === this.getMonthCurrent() &&
-          this.nextYear === this.getYear()
-        );
-      },
-      isDayEmpty: function isDayEmpty(day) {
-        return day !== "" && !this.isToday(day);
-      },
-      nextMonth: function nextMonth() {
-        if (!this.ValidateMax()) { return; }
-        this.countMonth++;
-  
-        this.momentCurrent = addMonth(this.countMonth);
-        if (getMonth(this.momentCurrent) % 12 === 0) {
-          this.nextYear++;
-          if (!this.ValidateMax()) {
-            this.countMonth--;
-            this.momentCurrent = addMonth(this.countMonth);
-            this.nextYear--;
-            return;
-          }
-        }
-        var dayInitDate = dayWeekStart(this.momentCurrent);
-        var totalDays = daysMonth(this.momentCurrent);
-  
-        this.weeks = this.createCalendar(dayInitDate, totalDays);
-      },
-      previustMonth: function previustMonth() {
-        this.countMonth--;
-        this.momentCurrent = addMonth(this.countMonth);
-        if (getMonth(this.momentCurrent) === 11) {
+      }
+
+      return [week1, week2, week3, week4, week5, week6];
+    },
+    getMonthCurrent: function getMonthCurrent() {
+      return letterMonth();
+    },
+    getDayMonth: function getDayMonth() {
+      return getDate();
+    },
+    getDayMonthToday: function getDayMonthToday() {
+      return getDate(this.momentCurrentToday);
+    },
+    dateSelected: function dateSelected(day) {
+      this.getDaySelected = day;
+      if (
+        this.momentCurrent.get("month") > this.momentCurrentToday.get("month")
+      ) {
+        var diff =
+          this.momentCurrent.get("month") -
+          this.momentCurrentToday.get("month");
+        this.momentCurrentToday.add(diff, "months");
+      }
+
+      if (
+        this.momentCurrent.get("month") < this.momentCurrentToday.get("month")
+      ) {
+        var diff$1 =
+          (this.momentCurrentToday.get("month") -
+            this.momentCurrent.get("month")) *
+          -1;
+        this.momentCurrentToday.add(diff$1, "months");
+      }
+
+      if (
+        this.momentCurrent.get("year") > this.momentCurrentToday.get("year")
+      ) {
+        var diff$2 =
+          this.momentCurrent.get("year") - this.momentCurrentToday.get("year");
+        this.momentCurrentToday.add(diff$2, "years");
+      }
+
+      if (
+        this.momentCurrent.get("year") < this.momentCurrentToday.get("year")
+      ) {
+        var diff$3 =
+          (this.momentCurrentToday.get("year") -
+            this.momentCurrent.get("year")) *
+          -1;
+        this.momentCurrentToday.add(diff$3, "years");
+      }
+
+      var Day = day;
+      var month = getMonth(this.momentCurrentToday) + 1;
+      var year = this.nextYear;
+
+      var date = formatDate(
+        (year + "-" + month + "-" + Day),
+        "YYYY-M-D",
+        "YYYY-MM-DD"
+      );
+      this.momentCurrentToday = InstanceMoment(date);
+
+      var resultDate = (this.nextYear) + "-" + (getMonth(this.momentCurrentToday) + 1) + "-" + day;
+      this.$emit("input", formatDate(resultDate, "YYYY-M-D", "YYYY-MM-DD"));
+    },
+    isToday: function isToday(day) {
+      return (
+        day === this.getDayMonthToday() &&
+        this.getMonth === this.getMonthCurrentToday &&
+        this.nextYear === this.getYearCurrentToday
+      );
+    },
+    isDayEmpty: function isDayEmpty(day) {
+      return day !== "" && !this.isToday(day);
+    },
+    nextMonth: function nextMonth() {
+      if (!this.ValidateMax()) { return; }
+      // const ddd = this.momentCurrent;
+      this.momentCurrent = undefined;
+      this.countMonth++;
+
+      this.momentCurrent = addMonth(1, this.pointRefMoment);
+      if (getMonth(this.momentCurrent) % 12 === 0) {
+        this.nextYear++;
+        if (!this.ValidateMax()) {
+          this.countMonth--;
+          this.momentCurrent = addMonth(-1, this.pointRefMoment);
           this.nextYear--;
-          if (!this.validateMin()) {
-            this.countMonth++;
-            this.momentCurrent = addMonth(this.countMonth);
-            this.nextYear++;
-            return;
-          }
+          return;
         }
-  
-        var dayInitDate = dayWeekStart(this.momentCurrent);
-        var totalDays = daysMonth(this.momentCurrent);
-  
-        this.weeks = this.createCalendar(dayInitDate, totalDays);
-      },
-      ValidateMax: function ValidateMax() {
-        if (this.max === true) { return true; }
-  
-        return this.nextYear <= this.max;
-      },
-      validateMin: function validateMin() {
-        if (this.min === true) { return true; }
-  
-        return this.nextYear >= this.min;
-      },
+      }
+      var dayInitDate = dayWeekStart(this.momentCurrent);
+      var totalDays = daysMonth(this.momentCurrent);
+
+      this.weeks = this.createCalendar(dayInitDate, totalDays);
     },
-  };
+    previustMonth: function previustMonth() {
+      this.momentCurrent = undefined;
+      this.countMonth--;
+      this.momentCurrent = addMonth(-1, this.pointRefMoment);
+      if (getMonth(this.momentCurrent) === 11) {
+        this.nextYear--;
+        if (!this.validateMin()) {
+          this.countMonth++;
+          this.momentCurrent = addMonth(1, this.pointRefMoment);
+          this.nextYear++;
+          return;
+        }
+      }
+
+      var dayInitDate = dayWeekStart(this.momentCurrent);
+      var totalDays = daysMonth(this.momentCurrent);
+
+      this.weeks = this.createCalendar(dayInitDate, totalDays);
+    },
+    ValidateMax: function ValidateMax() {
+      if (this.max === true) { return true; }
+
+      return this.nextYear <= this.max;
+    },
+    validateMin: function validateMin() {
+      if (this.min === true) { return true; }
+
+      return this.nextYear >= this.min;
+    },
+  },
+};
 
 export { InputDateTime as default };
