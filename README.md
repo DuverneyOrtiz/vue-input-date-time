@@ -1,11 +1,11 @@
 # Vue canlendar and vue clock
 
 <div align="center">
-  <img width="436" height="398" src="https://raw.githubusercontent.com/DuverneyOrtiz/vue-input-date-time/master/src/image/calendar.png?token=GHSAT0AAAAAACEPFTNH74LLUPTKEDA2ZYBGZFDHL7A">
+  <img width="436" height="398" src="https://github.com/DuverneyOrtiz/vue-input-date-time/blob/master/src/image/calendar.png?raw=true">
 </div>
 
 <div align="center">
-  <img width="436" height="398" src="https://github.com/DuverneyOrtiz/vue-input-date-time/blob/c429eda2e2b6598160ffde15b450f0077537b119/src/image/calendar.png">
+  <img width="436" height="398" src="https://github.com/DuverneyOrtiz/vue-input-date-time/blob/master/src/image/clock.png?raw=true">
 </div>
 
 Caracteriscticas del componente calendar y clock.
@@ -52,7 +52,7 @@ He aquí un ejemplo de uso básico:
 </template>
 
 <script>
-	import { VueInputDateTime, VueClock } from  "input-date-time";
+	import { VueInputDateTime, VueClock } from  "vue-input-date-time";
 
 	export  default {
 		components: {
