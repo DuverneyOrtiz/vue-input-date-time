@@ -6,6 +6,12 @@ $addPadding: 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    width: 100%;
+    height: 1.78rem;
+    margin-top: calc(($sizeRelojInternal / 2) - 14px);
+
+    position: absolute;
 }
 
 @mixin margins {
@@ -16,12 +22,12 @@ $addPadding: 0px;
 @mixin pointHour($grados) {
     transform: rotate($grados);
     @include common-minutes;
+    width: 100%;
+    height: 2px;
     position: absolute;
-    top: 0;
-    right: -1px;
-    width: 242px;
-    margin-top: calc(119px + #{$addPadding});
+    margin-top: calc(($sizeRelojInternal / 2) - 1px);
     // background-color: greenyellow;
+    z-index: 1000;
 
     span {
         transform: rotate(- #{grados});
@@ -31,16 +37,12 @@ $addPadding: 0px;
         background-color: red;
         @include margins;
     }
-
 }
+
 
 .minutes-12-30 {
     transform: rotate(90deg);
     @include common-minutes;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    margin-top: calc(115px + #{$addPadding});
     background-color: $colorManecilla;
 
     span {
@@ -53,7 +55,6 @@ $addPadding: 0px;
 
 .minutes-1-31 {
     @include pointHour(96deg);
-
 }
 
 .minutes-2-32 {
@@ -71,10 +72,6 @@ $addPadding: 0px;
 .minutes-5-35 {
     transform: rotate(120deg);
     @include common-minutes;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    margin-top: calc(115px + #{$addPadding});
     background-color: $colorManecilla;
 
     span {
@@ -103,10 +100,6 @@ $addPadding: 0px;
 .minutes-10-40 {
     transform: rotate(150deg);
     @include common-minutes;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    margin-top: calc(115px + #{$addPadding});
     background-color: $colorManecilla;
 
     span {
@@ -135,10 +128,6 @@ $addPadding: 0px;
 .minutes-15-45 {
     transform: rotate(180deg);
     @include common-minutes;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    margin-top: calc(115px + #{$addPadding});
     background-color: $colorManecilla;
 
     span {
@@ -171,10 +160,6 @@ $addPadding: 0px;
 .minutes-20-50 {
     transform: rotate(210deg);
     @include common-minutes;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    margin-top: 115px;
     background-color: $colorManecilla;
 
     span {
@@ -203,10 +188,6 @@ $addPadding: 0px;
 .minutes-25-55 {
     transform: rotate(240deg);
     @include common-minutes;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    margin-top: 115px;
     background-color: $colorManecilla;
 
     span {
