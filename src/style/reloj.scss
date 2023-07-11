@@ -26,6 +26,12 @@ $colorManecilla: transparent;
 @mixin span-hover {
     background-color: #D8D8D8!important;
     color: #0000FF!important;
+    border-radius: 50%;
+    height: 13px;
+    width: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @mixin common-minutes {
@@ -205,7 +211,7 @@ $colorManecilla: transparent;
 
     width: 60%;
     margin-left: 20%;
-    z-index: 1000;
+    z-index: 10000;
     // background-color: red;
     
 }
