@@ -72,7 +72,7 @@ export default [
         external: ['vue']
     },
     {
-        input: 'src/components/Clock.vue',
+        input: 'src/components/Clock/Clock.vue',
         output: [
             {
                 format: 'es',
@@ -100,6 +100,57 @@ export default [
                 format: 'iife',
                 file: 'dist/Clock/Clock.min.js',
                 name: 'ImputTime',
+
+                plugins: [terser()],
+            }
+
+        ],
+        plugins: [
+            json(),
+            vue({ css: true, preprocessStyles: true, template: { optimizeSSR: true } }),
+            postcss({
+                plugins: [postcssImport()]
+            }),
+            nodeResolve({ browser: true, jsnext: true, main: true }),
+            buble(),
+            commonjs(),
+            alias({
+                entries: {
+                    ['@']: path.resolve(__dirname, 'src')
+                }
+            })
+        ],
+        external: ['vue']
+    },
+    {
+        input: 'src/components/Militar/Clock.vue',
+        output: [
+            {
+                format: 'es',
+                file: 'dist/Militar/index.js',
+
+            },
+            {
+                format: 'es',
+                file: 'dist/Militar/Clock.esm.js',
+
+
+            },
+            {
+                format: 'esm',
+                file: 'dist/Militar/Clock.esm.js',
+
+            },
+            {
+                format: 'cjs',
+                file: 'dist/Militar/Clock.ssr.js',
+
+                plugins: [terser()],
+            },
+            {
+                format: 'iife',
+                file: 'dist/Militar/Clock.min.js',
+                name: 'ImputTimeMilitar',
 
                 plugins: [terser()],
             }
