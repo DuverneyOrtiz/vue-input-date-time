@@ -6,7 +6,7 @@
 
 <script>
 // import InputDateTime from '@/InputDateTime.vue'
-import VueClock from '@/components/Clock.vue'
+import VueClock from '@/components/Militar/Clock.vue'
 
 export default {
   name: 'App',
@@ -15,7 +15,7 @@ export default {
     VueClock
   },
   data: () => ({
-    hours: '00:00:00 am',
+    hours: '00:00:00',
     date: '2023-01-22'
   })
 }
